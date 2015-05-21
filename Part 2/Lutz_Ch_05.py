@@ -73,6 +73,10 @@ print((5 / 2), (5 / 2.0), (5 / -2.0), (5 / -2))
 print((5 // 2), (5 // 2.0), (5 // -2.0), (5 // -2))
 print((9 / 3), (9.0 / 3), (9 // 3), (9 // 3.0))
 
+print(1j * 1J)
+print(2 + 1j * 3)
+print((2 + 1j) * 3)
+
 
 ## PG 151 Hex, Octal, Binary: Literals and conversions
 
@@ -85,3 +89,121 @@ print(0x2F, (2 * (16 ** 1)) + (15 * (16 ** 0)))
 print(0xF, 0b1111, (1 * (2 ** 3) + 1 * (2 ** 2) + 1 * (2 ** 1) + 1 * (2 ** 0)))
 
 print(oct(64), hex(64), bin(64))    # Numbers -> digit strings
+
+print(64, 0o100, 0x40, 0b1000000)
+print(int('64'), int('100', 8), int('40', 16), int('1000000', 2))
+print(int('0x40', 16), int('0b1000000', 2))
+
+print(eval('64'), eval('0o100'), eval('0x40'), eval('0b1000000'))
+
+print('{0:o}, {1:x}, {2:b}'.format(64, 64, 64))
+print('%o, %x, %x. %X' % (64, 64, 255, 255))
+
+print(0o1, 0o20, 0o377)
+
+x = 1                   # 1 decimal is 0001 in bits
+print(x << 2)           # Shift left 2 bits: 0100
+print(x | 2)            # Bitwise OR (either bit=1): 0011
+print(x & 1)            # Bitwise AND (both bits=1: 0001
+
+X = 0b0001              # Binary literals
+print(X << 2)           # Shift left
+print(bin(X << 2))      # Binary digits string
+print(bin(X | 0b010))   # Bitwise OR: either
+print(bin(X & 0b1))     # Bitwise AND: both
+
+X = 0xFF                # Hex literals
+print(bin(X))
+print(X ^ 0b10101010)   # Bitwise XOR: either but not both
+print(bin(X ^ 0b10101010))
+print(int('01010101', 2))   # Digits=>number: string to int per base
+print(hex(85))              # Number=>digits: Hex digit string
+
+X = 99
+print(bin(X), X.bit_length(), len(bin(X)) - 2)
+# print(bin(256), (256).bit_length(), len(bin(256) - 2))
+
+
+import math
+
+print(math.pi, math.e)                      # Common constants
+print(math.sin(2 * math.pi / 180))          # Sine, tangent, cosine
+print(math.sqrt(144), math.sqrt(2))         # Square root
+print(pow(2, 4), 2 ** 4, 2.0 ** 4.0)        # Exponential power
+print(abs(-42.0), sum((1, 2, 3, 4)))        # Absolute value, summation
+print(min(3, 1, 2, 4), max(3, 1, 2, 4))     # Minimum, Maximum
+
+print(math.floor(2.567), math.floor(-2.567))    # Floor (next-lower integer)
+print(math.trunc(2.567), math.trunc(-2.567))    # Truncate (drop decimal digits)
+print(int(2.567), int(-2.567))                  # Truncate (integer conversion)
+print(round(2.567), round(2.467), round(2.567, 2))  # Round
+print('%.1f' % 2.567, '{0:.2f}'.format(2.567))       # Round for display
+
+print((1 / 3.0), round(1 / 3.0, 2), ('%.2f' % (1 / 3.0)))
+
+print(math.sqrt(144))           # Module
+print(144 ** .5)                # expression
+print(pow(144, .5))             # Built-in
+print(math.sqrt(1234567890))    # Larger numbers
+
+
+import random
+
+print(random.random())          # Random floats, integers, choices, shuffles
+print(random.random())
+print(random.randint(1, 10))
+print(random.randint(1, 10))
+print(random.choice(['Life of Brian', 'Holy Grail', 'Meaning of life']))
+print(random.choice(['Life of Brian', 'Holy Grail', 'Meaning of life']))
+
+suits = ['hearts', 'clubs', 'diamonds', 'spades']
+random.shuffle(suits)
+print(suits)
+random.shuffle(suits)
+print(['clubs', 'diamonds', 'hearts', 'spades'])
+
+## PG 157 Decimals
+print(0.1 + 0.1 + 0.1 - 0.3)
+
+from decimal import Decimal
+
+print(Decimal('0.1') + Decimal('0.1') + Decimal('0.1') - Decimal('0.3'))
+print(Decimal('0.1') + Decimal('0.1') + Decimal('0.1') - Decimal('0.30'))
+
+import decimal
+
+print(decimal.Decimal(1) / decimal.Decimal(7))      # Default: 28 digits
+decimal.getcontext().prec = 4
+print(decimal.Decimal(1) / decimal.Decimal(7))      # Fixed precision
+print(Decimal(0.1) + Decimal(0.1) + Decimal(0.1) - Decimal(0.3))
+
+print(1999 + 1.33)     # This has more digits in memory than displayed
+decimal.getcontext().prec = 2
+pay = decimal.Decimal(str(1999 + 1.33))
+print(pay)
+
+decimal.getcontext().prec = 28
+print(decimal.Decimal('1.00') / decimal.Decimal('3.00'))
+
+with decimal.localcontext() as ctx:
+    ctx.prec = 2
+    print(decimal.Decimal('1.00') / decimal.Decimal('3.00'))
+print(decimal.Decimal('1.00') / decimal.Decimal('3.00'))
+
+
+## PG 160 fractions
+
+from fractions import Fraction
+x = Fraction(1, 3)                  # Numerator, Denominator
+y = Fraction(4, 6)                  # Simplified to 2, 3 by gcd
+
+print(x)
+print(y)
+
+print(x + y)                        # results are exact numerator, denominator
+print(x - y)
+print(x * y)
+
+print(Fraction('.25'))
+print(Fraction('1.25'))
+print(Fraction('.25') + Fraction('1.25'))
