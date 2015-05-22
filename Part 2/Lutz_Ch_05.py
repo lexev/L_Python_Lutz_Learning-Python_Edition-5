@@ -207,3 +207,96 @@ print(x * y)
 print(Fraction('.25'))
 print(Fraction('1.25'))
 print(Fraction('.25') + Fraction('1.25'))
+a = 1 / 3.0                         # Only as accurate as floating-point hardware
+b = 4 / 6.0                        # Can lose precision over many calculations
+
+print(a)
+print(b)
+print(a + b)
+print(a - b)
+print(a * b)
+
+print(0.1 + 0.1 + 0.1 - 0.3)        # Should be zero, close but no exact
+
+print(Fraction(1, 10) + Fraction(1, 10) + Fraction(1, 10) - Fraction(3, 10))
+print(Decimal('0.1') + Decimal('0.1') + Decimal('0.1') - Decimal('0.3'))
+
+print(1 / 3)
+print(Fraction(1, 3))
+decimal.getcontext().prec = 2
+print(Decimal(1) / Decimal(3))
+
+print((1 / 3) + (6 / 12))
+print(Fraction(6, 12))
+print(Fraction(1, 3) + Fraction(6, 12))
+print(decimal.Decimal(str(1 / 3)) + decimal.Decimal(str(6 / 12)))
+print(1000.0 / 1234567890)
+print(Fraction(1000, 1234567890))
+
+print(2.5.as_integer_ratio())         # Float object method
+
+f = 2.5
+z = Fraction(*f.as_integer_ratio())     # Convert float->fraction: two args
+print(z)                                # Same as Fraction(5, 2)
+
+print(x)
+print(x + z)
+
+print(float(x))
+print(float(z))
+print(float(x + z))
+print(17 / 6)
+print(Fraction.from_float(1.75))        # Convert float -> fraction: other way
+print(Fraction(*1.75.as_integer_ratio()))
+
+print(x)
+print(x + 2)                    # Fraction + int -> Fraction
+print(x + 2.0)                  # Fraction + float -> Float
+print(x + (1. / 3))               # Fraction + float -> Float
+print(x + (4. / 3))
+print(x + Fraction(4, 3))       # Fraction + Fraction -> Fraction
+
+print(4.0 / 3)
+# print(4.0 / 3).as_integer_ratio()
+
+# print(x)
+# a = x + Fraction(*(4.0 / 3).as_integer_ratio())
+# print(a)
+# print(a.limit_denominator(10))
+
+## PG 163 Sets
+
+x = set('abcde')
+y = set('bdxyz')
+
+print(x)
+print(y)
+
+print(x - y)            # Difference
+print(x | y)            # Union
+print(x & y)            # Intersection
+print(x ^ y)            # Symmetric difference
+print(x > y, x < y)     # Superset, subset
+
+print('e' in x)         # Membership
+print('e' in 'Camelot', 22 in [11, 22, 33])     # Works with other types as well
+
+z = x.intersection(y)       # Same as x & y
+print(z)
+z.add('SPAM')               # Insert one item
+print(z)
+z.update({'X', 'Y'})   # Merge: in-place union
+print(z)
+z.remove('b')               # Delete one item
+print(z)
+
+for item in set('abc'):
+    print(item * 3)
+
+S = set([1, 2, 3])
+print(S | set([3, 4]))      # Expressions require both to be sets
+# print(S | [3, 4])
+print(S.union([3, 4]))      # But their methods allow any iterable
+print(S.intersection((1, 3, 5)))
+print(S.issubset(range(-5, 5)))
+
