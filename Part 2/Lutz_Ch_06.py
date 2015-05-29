@@ -5,7 +5,7 @@ __author__ = 'rolando'
 ###  CH 6: The Dynamic Typing Interlude
 ############################################
 
-### PG 186 Test your knowedge
+### PG 186 Test your knowledge
 
 ### 1. Consider the following three statements. Do they change the value for A?
 ###     a = "spam"
