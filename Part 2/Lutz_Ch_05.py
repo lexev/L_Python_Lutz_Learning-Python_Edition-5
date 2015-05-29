@@ -300,3 +300,54 @@ print(S.union([3, 4]))      # But their methods allow any iterable
 print(S.intersection((1, 3, 5)))
 print(S.issubset(range(-5, 5)))
 
+print(set([1, 2, 3, 4]))    # Built-in: same as in 2.6
+print(set('spam'))          # Add all items in an iterable
+
+print({1, 2, 3, 4})         # Set literals: new in 3.X (and 2.7)
+S = {'s', 'p', 'a', 'm'}
+S.add('alot')               # Methods work as before
+print(S)
+
+S1 = {1, 2, 3, 4}
+print(S1 & {1, 3})          # Intersection
+print({1, 5, 3, 6} | S1)    # Union
+print(S1 - {1, 3, 4})       # Difference
+print(S1 > {1, 3})          # Superset
+
+print(S1 - {1, 2, 3, 4})    # Empty sets print differently
+print(type({}))             # Because {} is an empty dictionary
+S = set()                   # Initialize an empty set
+S.add(1.23)
+print(S)
+
+print({1, 2, 3} | {3, 4})
+# print({1, 2, 3} | [3, 4])
+print({1, 2, 3}.union([3, 4]))
+print({1, 2, 3}.union({3, 4}))
+print({1, 2, 3}.union(set([3, 4])))
+print({1, 2, 3}.intersection((1, 3, 5)))
+print({1, 2, 3}.issubset(range(-5, 5)))
+
+print(S)
+# S.add([1, 2, 3])    # Only immutable objects work in a set
+S.add((1, 2, 3))        # NO list or dict, but tuple OK
+print(S | {(4, 5, 6), (1, 2, 3)})
+print((1, 2, 3) in S)
+print((1, 4, 3) in S)
+print((4, 5, 6) in S)
+
+print({x ** 2 for x in [1, 2, 3, 4]})       # 3.X/2.7 set comprehension
+print({x for x in 'spam'})                  # Same as: set('spam')
+print({c * 4 for c in 'spam'})              # Set of collected expression results
+print({c * 4 for c in 'spamham'})
+S = {c * 4 for c in 'spam'}
+print(S | {'mmmm', 'xxxx'})
+print(S & {'mmmm', 'xxxx'})
+
+L = [1, 2, 1, 3, 2, 4, 5]
+print(set(L))
+L = list(set(L))                            # Remove duplicates
+print(L)
+print(list(set(['yy', 'cc', 'aa', 'xx', 'dd', 'aa'])))  # But the order may change
+
+print(set([1, 3, 5, 7]) - set([1, 2, 4, 5, 6]))
