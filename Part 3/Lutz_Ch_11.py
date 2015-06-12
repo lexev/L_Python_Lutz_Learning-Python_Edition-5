@@ -1,7 +1,7 @@
 __author__ = 'rolando'
 
 ############################################
-#### Part 2: Statements and Syntax PG 319-469
+#### Part 3: Statements and Syntax PG 319-469
 ###  CH 11: Assignments, Expressions, and prints
 ############################################
 

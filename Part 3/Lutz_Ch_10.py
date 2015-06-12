@@ -1,7 +1,7 @@
 __author__ = 'rolano'
 
 ############################################
-#### Part 2: Statements and Syntax PG 319-469
+#### Part 3: Statements and Syntax PG 319-469
 ###  CH 10: Introducing Python Statements
 ############################################
 
